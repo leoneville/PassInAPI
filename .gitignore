@@ -4,3 +4,4 @@ venv
 .env
 storage.db
 case.py
+.vscode
