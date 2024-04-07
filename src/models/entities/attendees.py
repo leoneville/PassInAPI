@@ -14,6 +14,12 @@ class Attendees(Base):
     event_id: str = Column(String,  ForeignKey("events.id"), nullable=False, unique=True)
     created_at: datetime = Column(DateTime, default=func.now())
 
+    def __init__(self, id: str, name: str, email: str, event_id: str) -> None:
+        self.id = id
+        self.name = name
+        self.email = email
+        self.event_id = event_id
+
     def __repr__(self) -> str:
         return f"<Attendees: id={self.id}, name={self.name}, email={self.email}, event_id={self.event_id}>"
 
