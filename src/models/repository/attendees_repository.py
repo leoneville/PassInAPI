@@ -3,6 +3,7 @@ from typing import Dict, Optional, List
 from src.models.settings.connection import db_connection_handler
 from src.models.entities import Attendees, Events, CheckIns
 from sqlalchemy.exc import NoResultFound, IntegrityError
+from src.errors.error_types.http_conflict import HttpConflictError
 
 
 class AttendeesRepository:
@@ -21,7 +22,7 @@ class AttendeesRepository:
 
                 return attendee_info
             except IntegrityError:
-                raise Exception("Participante já cadastrado!")
+                raise HttpConflictError("Participante já cadastrado!")
             except Exception as exception:
                 db.session.rollback()
                 raise exception

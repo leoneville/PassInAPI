@@ -1,4 +1,5 @@
 from sqlalchemy.exc import IntegrityError, NoResultFound
+from src.errors.error_types.http_conflict import HttpConflictError
 
 from src.models.settings.connection import db_connection_handler
 from src.models.entities import CheckIns
@@ -14,7 +15,7 @@ class CheckInRepository:
                 return attendee_id
 
             except IntegrityError:
-                raise Exception("Check In já cadastrado!")
+                raise HttpConflictError("Check In já cadastrado!")
             except Exception as exception:
                 db.session.rollback()
                 raise exception
