@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"notebook.formatOnSave.enabled": true,
+		"python.defaultInterpreterPath": ".\\venv\\Scripts\\python.exe",
+	}
+}
